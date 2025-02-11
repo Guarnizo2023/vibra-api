@@ -19,7 +19,7 @@ export class UserEmotion extends Document {
     @Prop()
     event: events;
 
-    @Prop({ required: true, default: 0})
+    @Prop({ required: true })
     responseNote: string;
 }
 

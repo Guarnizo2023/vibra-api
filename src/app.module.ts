@@ -1,10 +1,15 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-import { AuthModule } from './helpers/auth/auth.module';
-import { UsersModule } from './users/users.module';
-import { LoggerModule } from './helpers/logger/logger.module';
 import { EmotionsModule } from './emotions/emotions.module';
+import { AuthModule } from './helpers/auth/auth.module';
+import { LoggerModule } from './helpers/logger/logger.module';
+import { HightSchoolsModule } from './hightSchools/hightSchools.module';
+import { RolesModule } from './roles/roles.module';
+import { UserEmotionsModule } from './userEmotions/userEmotions.module';
+import { UsersModule } from './users/users.module';
+import { CoursesModule } from './courses/courses.module';
+
 
 @Module({
   imports: [
@@ -14,6 +19,10 @@ import { EmotionsModule } from './emotions/emotions.module';
     AuthModule,
     UsersModule,
     EmotionsModule,
+    HightSchoolsModule,
+    RolesModule,
+    CoursesModule,
+    UserEmotionsModule
   ],
 })
 export class AppModule { }

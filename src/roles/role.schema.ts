@@ -8,12 +8,12 @@ export class Role extends Document {
     id: string;
 
     @Prop({ required: true })
-    name: string;    
+    name: string;
 
     @Prop({ required: true, unique: true })
     description: string;
 
-    @Prop({ required: true, unique: true })
+    @Prop({ required: true })
     permissions: string[]; // ["Create", "View"]
 }
 

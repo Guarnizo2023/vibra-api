@@ -1,4 +1,3 @@
-// users/users.service.ts
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
@@ -15,14 +14,14 @@ export class UsersService {
         this.logger.log('UsersService initialized');
     }
 
-    async create(createUserDto: any): Promise<User> {
+    async create(createUserDto: User): Promise<User> {
         this.logger.log('Creating a new user...');
         const hashedPassword = await bcrypt.hash(createUserDto.password, 10);
         const createdUser = new this.userModel({ ...createUserDto, password: hashedPassword });
         return createdUser.save();
     }
 
-    async updateKeepSessionActive(createUserDto: any): Promise<User> {
+    async updateKeepSessionActive(createUserDto: User): Promise<User> {
         this.logger.log('Updating a user...');
         const createdUser = new this.userModel({ ...createUserDto, keepSessionActive: createUserDto.keepSessionActive });
         return createdUser.save();

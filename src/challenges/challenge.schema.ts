@@ -1,7 +1,7 @@
 // users/user.schema.ts
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import { HightSchool } from 'src/highSchools/hightSchool.schema';
+import { HightSchool } from 'src/hightSchools/hightSchool.schema';
 
 @Schema()
 export class Challenge extends Document {

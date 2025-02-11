@@ -1,8 +1,7 @@
-// users/user.schema.ts
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { Course } from 'src/courses/course.schema';
-import { HightSchool } from 'src/highSchools/hightSchool.schema';
+import { HightSchool } from 'src/hightSchools/hightSchool.schema';
 import { Role } from 'src/roles/role.schema';
 
 @Schema()
@@ -29,10 +28,10 @@ export class User extends Document {
     @Prop({ required: true  })
     course: Course;
 
-    @Prop({ default: true })
+    @Prop({ default: false })
     keepSessionActive: boolean;
     
-    @Prop({ default: true, unique: true  })
+    @Prop({ unique: true  })
     rol: Role;
 }
 
