@@ -1,67 +1,135 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Getting Started with this vibra-api
 
+This API provides services for Vibra Web
 
-## Description
+========================================================================
 
-[Vibra](https://github.com/nestjs/nest) Social Skills
+## Technologies
 
-## Project setup
+API - NodeJS-Express-NestJS-MongoDB-Mongoose-Swagger
 
-```bash
-$ npm install
+## Other settings in the project
+
+|   <!-- -->   | <!--   -->  |    <!-- -->    |
+| :----------: | :---------: | :------------: |
+|  _Tsconfig_  | _Prettier_  | _Jsonwebtoken_ |
+|   _Eslint_   |    _Ejs_    |     _Cron_     |
+|    _Git_     |  _log4js_   |    _moment_    |
+| _Pre-commit_ |  _NestJS_   |   _MongoDb_    |
+|  _Mongoose_  | _socket-io_ |  _Typescript_  |
+
+## Starting 🚀
+
+_These instructions will allow you to get a copy of the project running on the local machine for development and testing purposes._
+
+See **Deployment** to learn how to deploy the project.
+
+### Pre- requirements 📋
+
+- _NodeJS_ current version v20.13.1
+- _MongoDB_ 
+
+##### Recommended 📋
+
+- _MongoDB Compass_
+- _Hyper_
+- _VsCode_
+- _Postman_
+- _GitHub Desktop_
+
+### Installation 🔧
+
+**To install the project locally and run the api please execute the following steps**
+
+_Clone the vibra-api repository from github_
+
+```
+git clone https://github.com/Guarnizo2023/vibra-api.git
 ```
 
-## Compile and run the project
+_Install the dependencies_
 
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+```
+npm i
 ```
 
-## Desarrollo
+_Consume the post method in the data/init path from Swagger or execute the following CURL_
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+```
+curl --location --request POST 'http://localhost:4000/data/init'
+```
+_Set configuration .env_
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ npm install -g mau
-$ mau deploy
+```
+Set your environment variables in the .env file
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+_Compile the project and start the server_
 
-## Recursos
+```
+npm run start-env
+```
 
-Check out a few resources that may come in handy when working with NestJS:
+_Invoke the service status endpoint_
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+```
+http://localhost:4000
+```
 
-## Support
+## Swagger 📦
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+_Invoke the API documentation endpoint_
 
-## Stay in touch
+```
+http://localhost:4000/api-docs
+```
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## Running the tests ⚙️
 
-## License
+_Run to start unit tests_
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+```
+npm run test
+```
+
+## Deployment 📦
+
+_Compile the project and build the application sources_
+
+```
+npm run compile
+```
+
+## Built with 🛠️
+
+_Tools and Technologies used_
+
+- [Nodejs](https://nodejs.org/en/) - Server-side JavaScript environment,uses an asynchronous and event-driven model
+- [Express](https://expressjs.com/) - Fast, unopinionated, minimalist web framework
+- [Npm](https://www.npmjs.com/) - Dependency manager
+- [MongoDB](https://www.mongodb.com/) - Database engine
+- [Mongoose](https://mongoosejs.com/docs/) - Lib Query MongoDB
+- [Swagger](https://swagger.io/) -Swagger is an open specification for defining APIs
+
+## Contributing 🖇️
+
+Contributions are currently not allowed.
+
+## Versioned 📌
+
+[SemVer](http://semver.org/) is used for versioning. For all versions available.
+
+## Authors ✒️
+
+_Built by_
+
+- **Ermes Guarnizo Motta** - _Engineer System Teacher UNAD_ - [Guarnizo2023](https://github.com/Guarnizo2023)
+- **Yovany Suárez Silva** - _Senior Full Stack Developer_ - [desobsesor](https://github.com/desobsesor)
+
+## License 📄
+
+This project is under the MIT License - see the file [LICENSE.md](LICENSE.md) for details
+
+## Expressions of Gratitude 🎁
+
+⌨️ With ❤️ for the educational community.

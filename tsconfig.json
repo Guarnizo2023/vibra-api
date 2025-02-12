@@ -1,4 +1,5 @@
-{
+{  
+  "include": ["./src/**/*"],
   "compilerOptions": {
     "module": "commonjs",
     "declaration": true,
@@ -8,14 +9,16 @@
     "allowSyntheticDefaultImports": true,
     "target": "ES2021",
     "sourceMap": true,
-    "outDir": "./dist",
+    "outDir": "./dist" /* Redirect output structure to the directory. */,
+    "rootDir": "./src" /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */,
     "baseUrl": "./",
-    "incremental": true,
-    "skipLibCheck": true,
+    "incremental": true,   
+    "skipLibCheck": true /* Skip type checking of declaration files. */,
     "strictNullChecks": false,
     "noImplicitAny": false,
     "strictBindCallApply": false,
-    "forceConsistentCasingInFileNames": false,
+    "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
     "noFallthroughCasesInSwitch": false
-  }
+  },
+  "exclude": ["node_modules", "**/*.test.ts", "**/*.spec.ts"]
 }
