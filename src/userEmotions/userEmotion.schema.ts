@@ -2,22 +2,22 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { Emotion } from 'src/emotions/emotion.schema';
 import { User } from 'src/users/user.schema';
-import { Event as events } from 'src/events/event.schema';
+import { Event } from 'src/events/event.schema';
 
 @Schema()
 export class UserEmotion extends Document {
-    
+
     @Prop({ required: true, unique: true })
     id: string;
 
     @Prop({ required: true })
-    user: User;    
+    user: User;
 
     @Prop({ required: true })
-    emotion: Emotion;    
+    emotion: Emotion;
 
     @Prop()
-    event: events;
+    event: Event;
 
     @Prop({ required: true })
     responseNote: string;
