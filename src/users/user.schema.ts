@@ -1,8 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
-import { Course } from 'src/courses/course.schema';
-import { HightSchool } from 'src/hightSchools/hightSchool.schema';
-import { Role } from 'src/roles/role.schema';
+import { Document, Schema as MongooseSchema } from 'mongoose';
 
 @Schema()
 export class User extends Document {
@@ -21,18 +18,15 @@ export class User extends Document {
 
     @Prop({ required: true })
     email: string;
-    
-    @Prop({ required: true })
-    hightSchool: HightSchool;
 
-    @Prop({ required: true  })
-    course: Course;
+    @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'Course' })
+    course: string;
 
     @Prop({ default: false })
     keepSessionActive: boolean;
     
-    @Prop({ unique: true  })
-    rol: Role;
+    @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'Role' })
+    role: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

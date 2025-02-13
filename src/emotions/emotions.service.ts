@@ -25,8 +25,8 @@ export class EmotionsService {
         return this.emotionModel.find().exec();
     }
 
-    async findByEmotionname(emotionname: string): Promise<Emotion | undefined> {
-        this.logger.log(`Finding emotion by emotionname: ${emotionname}`);
-        return this.emotionModel.findOne({ emotionname }).exec();
+    async findByName(name: string): Promise<Emotion | undefined> {
+        this.logger.log(`Finding emotion by name: ${name}`);
+        return this.emotionModel.findOne({ name }).exec();
     }
 }

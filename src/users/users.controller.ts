@@ -7,7 +7,7 @@ import { User } from './user.schema';
 export class UsersController {
     constructor(private readonly usersService: UsersService) { }
 
-    @Post()
+    @Post('create')
     async create(@Body() createUserDto: User) {
         return this.usersService.create(createUserDto);
     }
@@ -17,13 +17,19 @@ export class UsersController {
         return null//this.usersService.update(createUserDto);
     }
 
-    @Get()
+    @Get('all')
     async findAll() {
         return this.usersService.findAll();
     }
 
-    @Get(':username')
+    @Get('search/:username')
     async findOne(@Param('username') username: string) {
         return this.usersService.findByUsername(username);
+    }
+
+    @Post('login')
+    async findByUserAndPassword(@Body('username') username: string, @Body('password') password: string) {
+        console.log('****', username, password);
+        return this.usersService.findByUserAndPassword(username, password);
     }
 }

@@ -1,6 +1,5 @@
-// users/user.schema.ts
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, Schema as MongooseSchema } from 'mongoose';
 import { User } from 'src/users/user.schema';
 
 @Schema()
@@ -18,7 +17,7 @@ export class Session extends Document {
     @Prop({ required: true})
     online: boolean;
      
-    @Prop({ required: true })
+    @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'User' })
     user: User;  
 
 }

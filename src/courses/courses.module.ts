@@ -13,6 +13,6 @@ import { LoggerModule } from '../helpers/logger/logger.module';
     ],
     controllers: [CoursesController],
     providers: [CoursesService],
-    exports: [CoursesService],
+    exports: [CoursesService]
 })
 export class CoursesModule { }

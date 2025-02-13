@@ -14,7 +14,7 @@ export class Role extends Document {
     description: string;
 
     @Prop({ required: true })
-    permissions: string[]; // ["Create", "View"]
+    permissions: string[];
 }
 
 export const RoleSchema = SchemaFactory.createForClass(Role);

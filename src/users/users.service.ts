@@ -35,5 +35,12 @@ export class UsersService {
     async findByUsername(username: string): Promise<User | undefined> {
         this.logger.log(`Finding user by username: ${username}`);
         return this.userModel.findOne({ username }).exec();
+
     }
+
+    async findByUserAndPassword(username: string, password: string): Promise<User | undefined> {
+        this.logger.log(`Finding user by user and password: ${username} ${password}`);
+        return this.userModel.findOne({ username, password }).exec();
+    }
+
 }
