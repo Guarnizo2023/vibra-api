@@ -15,8 +15,8 @@ export class EmotionsController {
         return this.emotionsService.findAll();
     }
 
-    @Get(':emotionname')
-    async findOne(@Param('emotionname') emotionname: string) {
-        return this.emotionsService.findByEmotionname(emotionname);
+    @Get(':name')
+    async findOne(@Param('name') name: string) {
+        return this.emotionsService.findByName(name);
     }
 }

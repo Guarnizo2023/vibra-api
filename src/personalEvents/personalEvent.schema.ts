@@ -1,7 +1,5 @@
-// users/user.schema.ts
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
-import { HightSchool } from 'src/hightSchools/hightSchool.schema';
+import { Document, Schema as MongooseSchema } from 'mongoose';
 
 @Schema()
 export class PersonalEvent extends Document {
@@ -12,8 +10,8 @@ export class PersonalEvent extends Document {
     @Prop({ required: true })
     name: string;    
 
-    @Prop({ required: true, unique: true })
-    hightSchool: HightSchool;
+    @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'HightSchool' })
+    hightSchool: string;
 
 }
 

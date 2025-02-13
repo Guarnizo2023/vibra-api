@@ -1,8 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
-import { UserChallenge } from 'src/userChallenge/userChallenge.schema';
+import { Document, Schema as MongooseSchema } from 'mongoose';
 import { UserEmotion } from 'src/userEmotions/userEmotion.schema';
-import { UserPersonalEvent } from 'src/userPersonalEvents/userPersonalEvent.schema';
 
 @Schema()
 export class Rank extends Document {
@@ -10,14 +8,14 @@ export class Rank extends Document {
     @Prop({ required: true, unique: true })
     id: string;
 
-    @Prop({ required: true })
-    userEmotion: UserEmotion;    
+    @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'UserEmotion' })
+    userEmotion: string;    
 
-    @Prop({ required: true })
-    userChallenge: UserChallenge;    
+    @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'UserChallenge' })
+    userChallenge: string ;    
 
-    @Prop()
-    userPersonalEvent: UserPersonalEvent;
+    @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'UserPersonalEvent' })
+    userPersonalEvent: string;
 
     @Prop({ required: true, default: 0})
     responseNote: string;
