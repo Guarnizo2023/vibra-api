@@ -8,7 +8,7 @@ export class User extends Document {
     username: string;
 
     @Prop({ required: true })
-    password: string;    
+    password: string;
 
     @Prop({ required: true, unique: true })
     documentNumber: string;
@@ -18,9 +18,6 @@ export class User extends Document {
 
     @Prop({ required: true })
     email: string;
-
-    @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'Course' })
-    course: string;
 
     @Prop({ default: false })
     keepSessionActive: boolean;

@@ -16,12 +16,12 @@ export class RolesController {
         return this.rolesService.updateKeepSessionActive(createRoleDto);
     }
 
-    @Get()
+    @Get('all')
     async findAll() {
         return this.rolesService.findAll();
     }
 
-    @Get(':name')
+    @Get('roles/:name')
     async findOne(@Param('name') name: string) {
         return this.rolesService.findByName(name);
     }
