@@ -3,7 +3,7 @@ import { Document, Schema as MongooseSchema } from 'mongoose';
 
 @Schema()
 export class User extends Document {
-    
+
     @Prop({ required: true, unique: true })
     username: string;
 
@@ -13,7 +13,7 @@ export class User extends Document {
     @Prop({ required: true, unique: true })
     documentNumber: string;
 
-    @Prop({ required: true })
+    @Prop({ required: false })
     typeDocument: string;
 
     @Prop({ required: true })
@@ -21,9 +21,12 @@ export class User extends Document {
 
     @Prop({ default: false })
     keepSessionActive: boolean;
-    
-    @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'Role' })
+
+    @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'Role', required: false })
     role: string;
+
+    @Prop({ required: true })
+    avatar: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
