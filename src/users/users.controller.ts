@@ -1,15 +1,32 @@
-// users/users.controller.ts
 import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { User } from './user.schema';
+import { EventsGateway } from '../helpers/events.gateway';
 
 @Controller('users')
 export class UsersController {
-    constructor(private readonly usersService: UsersService) { }
+    constructor(
+        private readonly usersService: UsersService,
+        private readonly eventsGateway: EventsGateway
+    ) { }
+
+    @Get('trigger')
+    triggerEvent() {
+        const data = { message: '¡Evento generado desde el backend!' };
+        this.eventsGateway.emitEvent(data); // Emitir el evento
+        return { message: 'Evento emitido' };
+    }
 
     @Post('create')
     async create(@Body() createUserDto: User) {
-        return this.usersService.create(createUserDto);
+        const response = this.usersService.create(createUserDto)
+            .then((response) => {
+                if (response) {
+                    const data = { message: '¡Evento generado desde el backend!' };
+                    this.eventsGateway.emitEvent(data); // Emitir el evento
+                }
+            })
+        return response;
     }
 
     @Post()

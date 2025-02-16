@@ -8,7 +8,7 @@ import { LoggerModule } from '../helpers/logger/logger.module';
 @Module({
     imports: [
         MongooseModule.forFeature([{ name: UserEmotion.name, schema: UserEmotionSchema }]),
-        LoggerModule, // Import logger module
+        LoggerModule,
     ],
     controllers: [UserEmotionsController],
     providers: [UserEmotionsService],

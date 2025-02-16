@@ -63,4 +63,6 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
 /templates
 /test
+
 web.config
+tsconfig.build.tsbuildinfo

@@ -1,10 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
-import { ExecutionContext } from '@nestjs/common';
+import { ExecutionContext, INestApplication } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import * as request from 'supertest';
-import { INestApplication } from '@nestjs/common';
 
 describe('AuthController', () => {
     let app: INestApplication;
