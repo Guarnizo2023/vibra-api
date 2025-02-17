@@ -13,14 +13,19 @@ export class CoursesController {
   }
 
   /*
-    @Post()
-    async update(@Body() createCoursesDto: any) {
-        return this.coursesService.update(createCoursesDto);
-    }
-    */
+  @Post()
+  async update(@Body() createCoursesDto: any) {
+      return this.coursesService.update(createCoursesDto);
+  }
+  */
 
   @Get()
   async findAll() {
+    return this.coursesService.findAll();
+  }
+
+  @Get('allByHightSchool/:hightSchool')
+  async allByHightSchool(@Param('hightSchool') id: string) {
     return this.coursesService.findAll();
   }
 

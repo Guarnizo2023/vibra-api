@@ -18,7 +18,7 @@ export class HightSchoolsController {
         return this.hightSchoolsService.update(createHightSchoolsDto);
     }*/
 
-    @Get()
+    @Get('all')
     async findAll() {
         return this.hightSchoolsService.findAll();
     }
