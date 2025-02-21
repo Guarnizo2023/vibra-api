@@ -25,8 +25,8 @@ export class CoursesController {
   }
 
   @Get('allByHightSchool/:hightSchool')
-  async allByHightSchool(@Param('hightSchool') id: string) {
-    return this.coursesService.findAll();
+  async allByHightSchool(@Param('hightSchool') hightSchool: string) {
+    return this.coursesService.findByHightSchool(hightSchool);
   }
 
   @Get(':name')
