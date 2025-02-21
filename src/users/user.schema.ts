@@ -24,6 +24,9 @@ export class User extends Document {
 
     @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'Role', required: false })
     role: string;
+    
+    @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'Course', required: false })
+    course: string;
 
     @Prop({ required: true })
     avatar: string;

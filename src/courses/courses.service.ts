@@ -34,4 +34,9 @@ export class CoursesService {
         this.logger.log(`Finding courses by name: ${name}`);
         return this.coursesModel.findOne({ name }).exec();
     }
+
+    async findByHightSchool(hightSchool: string):  Promise<Course[]>  {
+        this.logger.log(`Finding courses by hightSchool: ${hightSchool}`);
+        return this.coursesModel.find({ hightSchool }).exec();
+    }
 }
