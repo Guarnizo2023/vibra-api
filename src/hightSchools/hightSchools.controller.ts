@@ -7,9 +7,9 @@ import { HightSchool } from './hightSchool.schema';
 export class HightSchoolsController {
     constructor(private readonly hightSchoolsService: HightSchoolsService) { }
 
-    @Post()
+    @Post('create')
     async create(@Body() createHightSchoolsDto: HightSchool) {
-        console.log('createHightSchoolsDto: ',createHightSchoolsDto);
+        console.log('createHightSchoolsDto: ', createHightSchoolsDto);
         return this.hightSchoolsService.create(createHightSchoolsDto);
     }
 

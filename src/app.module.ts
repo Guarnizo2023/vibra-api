@@ -11,10 +11,14 @@ import { RolesModule } from './roles/roles.module';
 import { UserEmotionsModule } from './userEmotions/userEmotions.module';
 import { UsersModule } from './users/users.module';
 import { FileUploadModule } from './file-upload/file-upload.module';
+import { EmailModule } from './emails/email.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true }),
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: '.env'
+    }),
     MongooseModule.forRoot(process.env.MONGO_URI),
     LoggerModule,
     AuthModule,
@@ -24,7 +28,8 @@ import { FileUploadModule } from './file-upload/file-upload.module';
     RolesModule,
     CoursesModule,
     UserEmotionsModule,
-    FileUploadModule
+    FileUploadModule,
+    EmailModule
   ],
   providers: [EventsGateway],
 })
