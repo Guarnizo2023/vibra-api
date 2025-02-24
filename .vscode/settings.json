@@ -3,5 +3,6 @@
         "activityBar.background": "#5D0A2A",
         "titleBar.activeBackground": "#820E3A",
         "titleBar.activeForeground": "#FFFCFD"
-    }
+    },
+    "CodeGPT.apiKey": "LM Studio"
 }

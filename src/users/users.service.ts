@@ -29,7 +29,15 @@ export class UsersService {
 
     async findAll(): Promise<User[]> {
         this.logger.log('Fetching all users...');
-        return this.userModel.find().exec();
+        return this.userModel.find()
+            .populate('role')
+            .populate({
+                path: 'course',
+                populate: {
+                    path: 'hightSchool'
+                }
+            })
+            .exec();
     }
 
     async findByUsername(username: string): Promise<User | undefined> {
