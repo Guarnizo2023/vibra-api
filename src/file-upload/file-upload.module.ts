@@ -7,7 +7,7 @@ import { FileUploadService } from './file-upload.service';
 
 @Module({
     imports: [
-        MongooseModule.forRoot('mongodb://192.168.101.72:27017/test'),
+        MongooseModule.forRoot('mongodb://192.168.101.71:27017/test'),
         MulterModule.register({
             storage: memoryStorage(),
         }),

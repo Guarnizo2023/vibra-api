@@ -1,4 +1,3 @@
-// logger/logger.service.ts
 import { Injectable, LoggerService } from '@nestjs/common';
 import { createLogger, format, transports, Logger } from 'winston';
 
@@ -11,7 +10,7 @@ export class AppLoggerService implements LoggerService {
             level: 'info',
             format: format.combine(
                 format.timestamp(),
-                format.printf(({ timestamp, level, message }) => `${timestamp} ${level}: ${message}`),
+                format.printf(({ timestamp, level, message }: any) => `${timestamp} ${level}: ${message}`),
             ),
             transports: [
                 new transports.Console(),

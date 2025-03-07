@@ -3,7 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { CoursesModule } from './courses/courses.module';
 import { EmotionsModule } from './emotions/emotions.module';
-import { AuthModule } from './helpers/auth/auth.module';
+import { AuthModule } from './auth/auth.module';
 import { EventsGateway } from './helpers/events.gateway';
 import { LoggerModule } from './helpers/logger/logger.module';
 import { HightSchoolsModule } from './hightSchools/hightSchools.module';
@@ -12,6 +12,8 @@ import { UserEmotionsModule } from './userEmotions/userEmotions.module';
 import { UsersModule } from './users/users.module';
 import { FileUploadModule } from './file-upload/file-upload.module';
 import { EmailModule } from './emails/email.module';
+import { PreTestModule } from './preTest/preTest.module';
+import { PoliciesModule } from './policies/policies.module';
 
 @Module({
   imports: [
@@ -29,7 +31,9 @@ import { EmailModule } from './emails/email.module';
     CoursesModule,
     UserEmotionsModule,
     FileUploadModule,
-    EmailModule
+    EmailModule,
+    PreTestModule,
+    PoliciesModule
   ],
   providers: [EventsGateway],
 })

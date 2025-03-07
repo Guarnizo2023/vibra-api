@@ -3,6 +3,7 @@ import { AppModule } from './app.module';
 import { WinstonModule } from 'nest-winston';
 import * as winston from 'winston';
 import { AppLoggerService } from './helpers/logger/logger.service';
+import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
@@ -19,14 +20,14 @@ async function bootstrap() {
     }),
   });
 
+  app.useGlobalPipes(new ValidationPipe())
+
   app.enableCors({
-    origin: ['http://localhost:8081', 'exp://192.168.101.72:8081'],
+    origin: ['http://localhost:8081', 'exp://192.168.101.71:8081'],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     allowedHeaders: 'Content-Type, Accept',
     credentials: true,
   });
-
-
 
   const logger = new AppLoggerService();
   app.useLogger(logger);

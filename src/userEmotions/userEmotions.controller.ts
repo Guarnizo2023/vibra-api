@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 import { UserEmotionsService } from './userEmotions.service';
 import { UserEmotion } from './userEmotion.schema';
-import { User } from 'src/users/user.schema';
+import { User } from 'src/users/user.entity';
 import { Emotion } from 'src/emotions/emotion.schema';
 import { Event } from 'src/events/event.schema';
 

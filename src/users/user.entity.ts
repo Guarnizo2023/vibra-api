@@ -24,12 +24,18 @@ export class User extends Document {
 
     @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'Role', required: false })
     role: string;
-    
+
     @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'Course', required: false })
     course: string;
 
     @Prop({ required: true })
     avatar: string;
+
+    @Prop({ default: 0 })
+    totalScore: number;
+
+    //@Prop({ type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Activity', required: false }] })
+    //completedActivities: Activity[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
