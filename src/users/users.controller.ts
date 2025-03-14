@@ -1,8 +1,8 @@
 import { Body, Controller, Get, Param, Post, UnauthorizedException, UseGuards } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { EventsGateway } from '../helpers/events.gateway';
+import { EventsGateway } from '../sockets/events.gateway';
 import { CreateUserDto } from './dto/create-user.dto';
-import { AuthGuard } from './guard/auth.guard';
+import { JwtAuthGuard } from '../activities/guard/auth.guard';
 import { UsersService } from './users.service';
 
 @Controller('users')
@@ -14,7 +14,7 @@ export class UsersController {
     ) { }
 
     @Get('trigger')
-    @UseGuards(AuthGuard)
+    @UseGuards(JwtAuthGuard)
     triggerEvent() {
         const data = { message: '¡Evento generado desde el backend!' };
         this.eventsGateway.emitEvent(data); // Emitir el evento
@@ -22,7 +22,7 @@ export class UsersController {
     }
 
     @Post('create')
-    @UseGuards(AuthGuard)
+    @UseGuards(JwtAuthGuard)
     async create(@Body() createUserDto: CreateUserDto) {
         return this.usersService.create(createUserDto)
             .then((response: CreateUserDto) => {
@@ -37,24 +37,25 @@ export class UsersController {
     }
 
     @Post()
-    @UseGuards(AuthGuard)
+    @UseGuards(JwtAuthGuard)
     async update(@Body() createUserDto: any) {
         return null//this.usersService.update(createUserDto);
     }
 
     @Get('all')
-    @UseGuards(AuthGuard)
+    @UseGuards(JwtAuthGuard)
     async findAll() {
         return this.usersService.findAll();
     }
 
     @Get('search/:username')
-    @UseGuards(AuthGuard)
+    @UseGuards(JwtAuthGuard)
     async findOne(@Param('username') username: string) {
         return this.usersService.findByUsername(username);
     }
 
     @Post('login/userValidate')
+    @UseGuards(JwtAuthGuard)
     async findByEmailAndPassword(@Body('email') email: string, @Body('password') password: string) {
         console.info('User email and password: ', email, password);
         const user = await this.usersService.findByEmailAndPassword(email, password);

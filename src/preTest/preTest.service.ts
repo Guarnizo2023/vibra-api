@@ -3,7 +3,7 @@ import { CreatePreTestDto } from './dto/create-pretest.dto';
 import { UpdatePreTestDto } from './dto/update-pretest.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { PreTest, TestDocument } from './entities/preTest.entity';
+import { PreTest, TestDocument } from './schemas/preTest.schema';
 
 @Injectable()
 export class PreTestService {

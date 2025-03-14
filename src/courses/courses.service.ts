@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { AppLoggerService } from '../helpers/logger/logger.service';
-import { Course } from './course.schema';
+import { Course } from './schemas/course.schema';
 
 @Injectable()
 export class CoursesService {
@@ -10,7 +10,7 @@ export class CoursesService {
         @InjectModel(Course.name) private coursesModel: Model<Course>,
         private readonly logger: AppLoggerService,
     ) {
-        this.logger.log('CoursessService initialized');
+        this.logger.log('Courses Service initialized');
     }
 
     async create(createCoursesDto: Course): Promise<Course> {
@@ -26,7 +26,7 @@ export class CoursesService {
     }
 
     async findAll(): Promise<Course[]> {
-        this.logger.log('Fetching all coursess...');
+        this.logger.log('Fetching all courses...');
         return this.coursesModel.find().exec();
     }
 
@@ -35,7 +35,7 @@ export class CoursesService {
         return this.coursesModel.findOne({ name }).exec();
     }
 
-    async findByHightSchool(hightSchool: string):  Promise<Course[]>  {
+    async findByHightSchool(hightSchool: string): Promise<Course[]> {
         this.logger.log(`Finding courses by hightSchool: ${hightSchool}`);
         return this.coursesModel.find({ hightSchool }).exec();
     }

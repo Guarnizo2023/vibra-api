@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { AppLoggerService } from '../helpers/logger/logger.service';
-import { Emotion } from './emotion.schema';
+import { Emotion } from './schemas/emotion.schema';
 
 @Injectable()
 export class EmotionsService {

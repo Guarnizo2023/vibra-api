@@ -16,4 +16,9 @@ export class AuthController {
     async getProfile(@Request() req: any) {
         return req.user;
     }*/
+
+    /*@Post('register')
+    async register(@Body() registerDto: any) {
+        return this.authService.register(registerDto);
+    }*/
 }

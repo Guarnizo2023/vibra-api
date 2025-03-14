@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
+import { Activity } from 'src/activities/schemas/activity.schema';
 
 @Schema()
 export class User extends Document {
@@ -34,8 +35,8 @@ export class User extends Document {
     @Prop({ default: 0 })
     totalScore: number;
 
-    //@Prop({ type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Activity', required: false }] })
-    //completedActivities: Activity[];
+    @Prop({ type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Activity', required: false }] })
+    completedActivities: Activity[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

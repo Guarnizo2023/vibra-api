@@ -1,7 +1,6 @@
-
 import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 import { HightSchoolsService } from './hightSchools.service';
-import { HightSchool } from './hightSchool.schema';
+import { HightSchool } from './schemas/hightSchool.schema';
 
 @Controller('hightSchools')
 export class HightSchoolsController {

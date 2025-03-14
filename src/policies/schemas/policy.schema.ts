@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
-import { PolicyType } from './policy-type.enum';
+import { PolicyType } from '../types/policy-type.enum';
 
 export type PolicyDocument = Document & Policy;
 

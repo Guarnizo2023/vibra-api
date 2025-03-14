@@ -3,7 +3,6 @@ import { Document } from 'mongoose';
 
 @Schema()
 export class Emotion extends Document {
-
     @Prop({ unique: true })
     id: string;
 

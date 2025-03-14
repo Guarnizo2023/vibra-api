@@ -2,9 +2,9 @@ import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/c
 import { MongooseModule } from '@nestjs/mongoose';
 import { UsersService } from './users.service';
 import { UsersController } from './users.controller';
-import { User, UserSchema } from './user.entity';
+import { User, UserSchema } from './schemas/user.schema';
 import { LoggerModule } from '../helpers/logger/logger.module';
-import { EventsGateway } from 'src/helpers/events.gateway';
+import { EventsGateway } from 'src/sockets/events.gateway';
 import { LoggerMiddleware } from './logger/logger.middleware';
 import { AuthMiddleware } from '../auth/auth.middleware';
 import { JwtModule } from '@nestjs/jwt';

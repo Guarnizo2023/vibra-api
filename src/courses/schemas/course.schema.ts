@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
-import { HightSchool } from 'src/hightSchools/hightSchool.schema';
+import { HightSchool } from 'src/hightSchools/schemas/hightSchool.schema';
 
 @Schema()
 export class Course extends Document {

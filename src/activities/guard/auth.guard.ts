@@ -2,19 +2,19 @@ import { Injectable, CanActivate, ExecutionContext, UnauthorizedException } from
 import { Request } from 'express';
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class JwtAuthGuard implements CanActivate {
     constructor() { }
 
     async canActivate(context: ExecutionContext): Promise<boolean> {
         const request = context.switchToHttp().getRequest();
         const token = this.extractTokenFromHeader(request);
 
-        if (!request.url.includes('users/create') &&
+        /*if (!request.url.includes('users/create') &&
             !request.url.includes('users/all') &&
             !request.url.includes('users/login/userValidate') &&
             !request.url.includes('users/search')) {
             throw new UnauthorizedException('No valid route provided');
-        }
+        }*/
 
         if (!token) {
             //throw new UnauthorizedException('No token provided');
