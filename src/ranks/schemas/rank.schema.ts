@@ -1,23 +1,23 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
-import { UserEmotion } from 'src/userEmotions/userEmotion.schema';
+import { UserEmotion } from 'src/userEmotions/schemas/userEmotion.schema';
 
 @Schema()
 export class Rank extends Document {
-    
+
     @Prop({ required: true, unique: true })
     id: string;
 
     @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'UserEmotion' })
-    userEmotion: string;    
+    userEmotion: string;
 
     @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'UserChallenge' })
-    userChallenge: string ;    
+    userChallenge: string;
 
     @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'UserPersonalEvent' })
     userPersonalEvent: string;
 
-    @Prop({ required: true, default: 0})
+    @Prop({ required: true, default: 0 })
     responseNote: string;
 }
 

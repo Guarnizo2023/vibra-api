@@ -1,15 +1,15 @@
 import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 import { CoursesService } from './courses.service';
-import { Course } from './course.schema';
+import { Course } from './schemas/course.schema';
 
 @Controller('courses')
 export class CoursesController {
-  constructor(private readonly coursesService: CoursesService) {}
+  constructor(private readonly coursesService: CoursesService) { }
 
   @Post('create')
   async create(@Body() createCoursesDto: Course) {
     console.log('coursesDto: ', createCoursesDto);
-    return this.coursesService.create(createCoursesDto); 
+    return this.coursesService.create(createCoursesDto);
   }
 
   /*

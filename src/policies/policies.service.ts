@@ -6,8 +6,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Policy, PolicyDocument } from './policy.schema';
-import { UserPolicy, UserPolicyDocument } from './userPolicy.schema';
+import { Policy, PolicyDocument } from './schemas/policy.schema';
+import { UserPolicy, UserPolicyDocument } from './schemas/userPolicy.schema';
 
 @Injectable()
 export class PoliciesService {

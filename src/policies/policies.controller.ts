@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Param, Put, Req, UseGuards } from '@nestjs/common';
 import { PoliciesService } from './policies.service';
-import { Policy } from './policy.schema';
+import { Policy } from './schemas/policy.schema';
 import { AuthGuard } from './guard/auth.guard';
 
 @Controller('policies')
