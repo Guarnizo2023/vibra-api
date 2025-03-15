@@ -191,22 +191,17 @@ export class ActivitiesService {
      * @returns Promise containing the processed response results and score
      * @throws NotFoundException if the activity is not found
      */
-    async processResponse(
-        userId: string,
-        activityId: string,
-        responseDto: ActivityResponseDto
-    ): Promise<any> {
-        console.log('Received response:', responseDto);
-        console.log('Activity ID:', activityId);
-        console.log('User ID:', userId);
+    async processResponse(userId: string, activityId: string, responseDto: ActivityResponseDto): Promise<any> {
+        this.logger.log(`Processing response for user ${userId} and activity ${activityId}`);
 
         const activity = await this.findById(activityId);
         if (!activity) {
             throw new NotFoundException('Activity not found');
         }
 
+
         const results = responseDto.answers.map(answer => {
-            const question = activity.questions.find((q: any) => q?._id.toString() === answer.questionId);
+            const question = activity.questions.find((q: any) => q?.id.toString() == answer.questionId.toString());
             return {
                 ...answer,
                 isCorrect: question?.correctAnswer === answer.answer,
@@ -217,29 +212,41 @@ export class ActivitiesService {
         const totalScore = results.reduce((sum, result) =>
             sum + (result.isCorrect ? result.points : 0), 0);
 
+
         const responseData = {
             user: new Types.ObjectId(userId),
             activity: new Types.ObjectId(activityId),
-            responses: [{
-                questionId: responseDto.answers.map(answer => answer.questionId),
-                answer: responseDto.answers.map(answer => answer.answer),
-                isCorrect: true,
-                /*
-                isCorrect: responseDto.answers.map(answer => {
-                    const question = activity.questions.find((q: any) => q?._id.toString() === answer.questionId);
-                    return question?.correctAnswer === answer.answer;
-                })[0],
-                */
+            responses: responseDto.answers.map(answer => ({
+                questionId: answer.questionId,
+                answer: answer.answer,
+                isCorrect: true, //results.find(r => r?.questionId === answer?.questionId)?.isCorrect || false,
                 responseTime: 10
-            }],
+            })),
             score: totalScore,
             startTime: new Date(),
             endTime: new Date(),
             timeSpent: 10
         };
 
-        await this.userResponseModel.create(responseData);
+        const userResponse = await this.userResponseModel.findOne({
+            activity: new Types.ObjectId(activityId),
+            user: new Types.ObjectId(userId)
+        }).exec();
 
+        if (userResponse) {
+            await this.userResponseModel.findByIdAndUpdate(userResponse._id, {
+                ...responseData,
+                responses: [...userResponse.responses, ...responseData.responses]
+            }).exec();
+            return {
+                activityId,
+                userId,
+                results,
+                totalScore
+            };
+        }
+
+        await this.userResponseModel.create(responseData);
         return {
             activityId,
             userId,

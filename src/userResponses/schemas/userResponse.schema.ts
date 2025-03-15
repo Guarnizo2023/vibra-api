@@ -26,7 +26,7 @@ export class UserResponse extends Document {
 
     @Prop([{
         questionId: {
-            type: Types.ObjectId,
+            type: String,
             required: true
         },
         answer: {
@@ -46,7 +46,7 @@ export class UserResponse extends Document {
     @IsArray()
     @ValidateNested({ each: true })
     responses: Array<{
-        questionId: Types.ObjectId;
+        questionId: string;
         answer: string;
         isCorrect?: boolean;
         responseTime: number;
@@ -88,6 +88,7 @@ export class UserResponse extends Document {
 
 export const UserResponseSchema = SchemaFactory.createForClass(UserResponse);
 
+/*
 // Índices compuestos para optimizar consultas
 UserResponseSchema.index({ user: 1, activity: 1 });
 UserResponseSchema.index({ createdAt: -1 });
@@ -104,3 +105,4 @@ UserResponseSchema.pre<UserResponse>(/^find/, async function (next) {
     });
     next();
 });
+*/
