@@ -5,6 +5,7 @@ import { ActivitiesController } from './activities.controller';
 import { ActivitiesService } from './activities.service';
 import { Activity, ActivitySchema } from './schemas/activity.schema';
 import { WeeklySchedule, WeeklyScheduleSchema } from './schemas/weekly-schedule.schema';
+import { UserResponseService } from 'src/userResponses/userResponse.service';
 
 @Module({
     imports: [
@@ -15,7 +16,7 @@ import { WeeklySchedule, WeeklyScheduleSchema } from './schemas/weekly-schedule.
         ]),
     ],
     controllers: [ActivitiesController],
-    providers: [ActivitiesService],
+    providers: [ActivitiesService, UserResponseService],
     exports: [ActivitiesService]
 })
 export class ActivitiesModule { }

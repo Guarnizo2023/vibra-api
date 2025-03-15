@@ -21,11 +21,12 @@ export class ActivitiesController {
     @UseGuards(JwtAuthGuard)
     findAll(
         @Query('emotion') emotion: string,
+        @Query('userId') userId: string,
         @Query('page') page: number = 1,
         @Query('limit') limit: number = 10,
     ) {
-        console.log({ page, limit, emotion });
-        return this.activitiesService.paginate({ page, limit }, emotion == 'all' ? {} : { emotion });
+        console.log({ page, limit, userId, emotion });
+        return this.activitiesService.paginate({ page, limit }, userId, emotion == 'all' ? {} : { emotion });
     }
 
     @Get(':id')
