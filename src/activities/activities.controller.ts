@@ -58,13 +58,12 @@ export class ActivitiesController {
         return this.activitiesService.getTodaysActivity();
     }
 
-    @Post(':id/submit')
+    @Post(':id/:userId/submit')
     @UseGuards(JwtAuthGuard)
     submitResponse(
         @Param('id') activityId: string,
         @Param('userId') userId: string,
         @Body() responseDto: ActivityResponseDto,
-        @Req() req: any
     ) {
         return this.activitiesService.processResponse(
             userId,

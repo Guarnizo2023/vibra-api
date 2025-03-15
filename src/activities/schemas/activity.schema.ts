@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document, Types, Schema as MongooseSchema } from 'mongoose';
+import { Document, Schema as MongooseSchema, Types } from 'mongoose';
 import { Emotion } from 'src/emotions/schemas/emotion.schema';
 
 @Schema()
@@ -35,6 +35,7 @@ export class Activity extends Document {
     @Prop([{
         type: {
             _id: false,
+            id: String,
             questionText: String,
             type: { type: String, enum: ['multiple', 'open'] },
             options: [String],
@@ -43,6 +44,7 @@ export class Activity extends Document {
         }
     }])
     questions: Types.Array<{
+        id: string;
         questionText: string;
         type: 'multiple' | 'open';
         options?: string[];
@@ -73,6 +75,8 @@ export class Activity extends Document {
     @Prop({ default: Date.now })
     createdAt: Date;
 
+    @Prop({ default: Date.now })
+    updatedAt: Date;
 }
 
 export const ActivitySchema = SchemaFactory.createForClass(Activity);

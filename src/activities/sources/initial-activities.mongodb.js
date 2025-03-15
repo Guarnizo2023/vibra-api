@@ -44,11 +44,13 @@ const activitiesData = [
         ],
         questions: [
             {
+                id: 'q1',
                 questionText: '¿Cual es el motivo que mas te llena de felicidad el dia de hoy?',
                 type: 'open',
                 points: 10
             },
             {
+                id: 'q2',
                 questionText: '¿Cómo afecta la gratitud a tu estado de ánimo?',
                 type: 'multiple',
                 options: ['Muy positivamente', 'Algo positivo', 'Sin efecto', 'Negativamente'],
@@ -56,6 +58,7 @@ const activitiesData = [
                 points: 5
             },
             {
+                id: 'q3',
                 questionText: '¿Crees que las emociones se pueden desarrollar?',
                 type: 'multiple',
                 options: ['Es posible', 'Absolutamente Si', 'Definitivamente No'],
@@ -89,10 +92,11 @@ const activitiesData = [
         ],
         questions: [
             {
-                questionText: 'How do you feel after the exercise?',
+                id: 'q4',
+                questionText: '¿Cómo te sientes después del ejercicio?',
                 type: 'multiple',
-                options: ['Very Relaxed', 'Somewhat Relaxed', 'No Change', 'More Tense'],
-                correctAnswer: 'Very Relaxed',
+                options: ['Muy relajado', 'Algo relajado', 'Sin cambios', 'Más tenso'],
+                correctAnswer: 'Muy relajado',
                 points: 5
             }
         ],
@@ -122,12 +126,14 @@ const activitiesData = [
         ],
         questions: [
             {
-                questionText: 'What\'s the most important thing you need to do today?',
+                id: 'q5',
+                questionText: '¿Qué es lo más importante que tienes que hacer hoy?',
                 type: 'open',
                 points: 10
             },
             {
-                questionText: 'Which activity resonated with you the most?',
+                id: 'q6',
+                questionText: '¿Qué actividad te resonó más?',
                 type: 'open',
                 points: 10
             }
