@@ -25,14 +25,17 @@ export class ActivitiesService {
 
     async paginate(
         options: PaginationQueryDto,
-        query: any = {}
-    ): Promise<{ docs: Activity[]; totalDocs: number; page: number; limit: number }> {
+        userId: string,
+        query: any = {},
+    ): Promise<{ docs: Activity[]; totalDocs: number; userResponse: UserResponse[], page: number; limit: number }> {
         const { page = 1, limit = 10 } = options;
         const skip = (page - 1) * limit;
 
         const baseQuery = { isActive: true, ...query };
 
-        const [docs, totalDocs] = await Promise.all([
+        console.log('baseQuery: ', userId);
+
+        const [docs, totalDocs, userResponse] = await Promise.all([
             this.activityModel
                 .find(baseQuery)
                 .populate('emotion')
@@ -40,12 +43,18 @@ export class ActivitiesService {
                 .skip(skip)
                 .limit(limit)
                 .exec(),
-            this.activityModel.countDocuments(baseQuery).exec()
-        ]);
-
+            this.activityModel.countDocuments(baseQuery).exec(),
+            userId ? this.userResponseModel.find({ user: new Types.ObjectId(userId) })
+                .populate('activity')
+                .populate('user')
+                .lean()
+                .exec() : Promise.resolve([])
+        ])
+        console.log('userResponse: ', userResponse);
         return {
             docs,
             totalDocs,
+            userResponse,
             page,
             limit
         };
@@ -199,7 +208,6 @@ export class ActivitiesService {
             throw new NotFoundException('Activity not found');
         }
 
-
         const results = responseDto.answers.map(answer => {
             const question = activity.questions.find((q: any) => q?.id.toString() == answer.questionId.toString());
             return {
@@ -211,7 +219,6 @@ export class ActivitiesService {
 
         const totalScore = results.reduce((sum, result) =>
             sum + (result.isCorrect ? result.points : 0), 0);
-
 
         const responseData = {
             user: new Types.ObjectId(userId),
