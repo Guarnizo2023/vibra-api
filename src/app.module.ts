@@ -1,22 +1,22 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-import { CoursesModule } from './courses/courses.module';
-import { EmotionsModule } from './emotions/emotions.module';
-import { AuthModule } from './auth/auth.module';
-import { EventsGateway } from './sockets/events.gateway';
+import { CoursesModule } from './domains/courses/courses.module';
+import { EmotionsModule } from './domains/emotions/emotions.module';
+import { AuthModule } from './infrastructure/auth/auth.module';
+import { EventsGateway } from './infrastructure/sockets/events.gateway';
 import { LoggerModule } from './helpers/logger/logger.module';
-import { HightSchoolsModule } from './hightSchools/hightSchools.module';
-import { RolesModule } from './roles/roles.module';
-import { UserEmotionsModule } from './userEmotions/userEmotions.module';
-import { UsersModule } from './users/users.module';
-import { FileUploadModule } from './file-upload/file-upload.module';
-import { EmailModule } from './emails/email.module';
-import { PreTestModule } from './preTest/preTest.module';
-import { PoliciesModule } from './policies/policies.module';
-import { ActivitiesModule } from './activities/activities.module';
-import { RankingModule } from './rankings/ranking.module';
-import { SchedulingModule } from './scheduling/scheduling.module';
+import { HightSchoolsModule } from './domains/hightSchools/hightSchools.module';
+import { RolesModule } from './domains/roles/roles.module';
+import { UserEmotionsModule } from './domains/userEmotions/userEmotions.module';
+import { UsersModule } from './domains/users/users.module';
+import { FileUploadModule } from './infrastructure/file-upload/file-upload.module';
+import { EmailModule } from './infrastructure/emails/email.module';
+import { PreTestModule } from './domains/preTest/preTest.module';
+import { PoliciesModule } from './domains/policies/policies.module';
+import { ActivitiesModule } from './domains/activities/activities.module';
+import { RankingModule } from './domains/rankings/ranking.module';
+import { SchedulingModule } from './domains/scheduling/scheduling.module';
 
 @Module({
   imports: [
