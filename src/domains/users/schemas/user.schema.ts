@@ -1,6 +1,8 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document, Schema as MongooseSchema } from 'mongoose';
+import { Document, Schema as MongooseSchema, Types } from 'mongoose';
 import { Activity } from '../../activities/schemas/activity.schema';
+import { Role } from 'src/domains/roles/schemas/role.schema';
+import { Course } from 'src/domains/courses/schemas/course.schema';
 
 @Schema()
 export class User extends Document {
@@ -23,11 +25,11 @@ export class User extends Document {
     @Prop({ default: false })
     keepSessionActive: boolean;
 
-    @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'Role', required: false })
-    role: string;
+    @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'Role', required: false, index: true })
+    role: Types.ObjectId | Role;
 
-    @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'Course', required: false })
-    course: string;
+    @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'Course', required: false, index: true })
+    course: Types.ObjectId | Course;
 
     @Prop({ required: true })
     avatar: string;

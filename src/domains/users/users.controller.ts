@@ -4,6 +4,7 @@ import { EventsGateway } from '../../infrastructure/sockets/events.gateway';
 import { CreateUserDto } from './dto/create-user.dto';
 import { JwtAuthGuard } from '../activities/guard/auth.guard';
 import { UsersService } from './users.service';
+import { User } from './schemas/user.schema';
 
 @Controller('users')
 export class UsersController {
@@ -25,7 +26,7 @@ export class UsersController {
     @UseGuards(JwtAuthGuard)
     async create(@Body() createUserDto: CreateUserDto) {
         return this.usersService.create(createUserDto)
-            .then((response: CreateUserDto) => {
+            .then((response: User) => {
                 if (response) {
                     const data = { message: `Se ha registrado un nuevo usuario al sistema, Usuario: ${response.username}` };
                     this.eventsGateway.emitEvent(data);
@@ -73,7 +74,7 @@ export class UsersController {
         };
 
         const token = this.jwtService.sign(payload, {
-            secret: 'vibra-secret-key', //process.env.JWT_SECRET,
+            secret: process.env.JWT_SECRET,
             expiresIn: '24h' // Token expires in 24 hours
         });
 
