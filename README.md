@@ -1,12 +1,15 @@
 # Getting Started with this vibra-api
 
 This API provides services for Vibra Web
+## Preview
+
+![image](./public/assets/vibra_api.png)
 
 ========================================================================
 
 ## Technologies
 
-API - NodeJS-Express-NestJS-MongoDB-Mongoose-Swagger
+API - NodeJS, NestJS, MongoDB, Mongoose, Swagger, Expo
 
 ## Other settings in the project
 
@@ -32,10 +35,11 @@ See **Deployment** to learn how to deploy the project.
 ##### Recommended 📋
 
 - _MongoDB Compass_
-- _Hyper_
-- _VsCode_
+- _Warm_
+- _Trae_
 - _Postman_
 - _GitHub Desktop_
+- _Android Studio Emulator Device_
 
 ### Installation 🔧
 
@@ -53,11 +57,6 @@ _Install the dependencies_
 npm i
 ```
 
-_Consume the post method in the data/init path from Swagger or execute the following CURL_
-
-```
-curl --location --request POST 'http://localhost:4000/data/init'
-```
 _Set configuration .env_
 
 ```
@@ -81,15 +80,7 @@ http://localhost:4000
 _Invoke the API documentation endpoint_
 
 ```
-http://localhost:4000/api-docs
-```
-
-## Running the tests ⚙️
-
-_Run to start unit tests_
-
-```
-npm run test
+http://localhost:4000/api
 ```
 
 ## Deployment 📦
@@ -104,8 +95,8 @@ npm run compile
 
 _Tools and Technologies used_
 
-- [Nodejs](https://nodejs.org/en/) - Server-side JavaScript environment,uses an asynchronous and event-driven model
-- [Express](https://expressjs.com/) - Fast, unopinionated, minimalist web framework
+- [NodeJS](https://nodejs.org/en/) - Server-side JavaScript environment,uses an asynchronous and event-driven model
+- [NestJS](https://nestjs.com/) - Fast, unopinionated, minimalist web framework
 - [Npm](https://www.npmjs.com/) - Dependency manager
 - [MongoDB](https://www.mongodb.com/) - Database engine
 - [Mongoose](https://mongoosejs.com/docs/) - Lib Query MongoDB
@@ -124,7 +115,7 @@ Contributions are currently not allowed.
 _Built by_
 
 - **Ermes Guarnizo Motta** - _Engineer System Teacher UNAD_ - [Guarnizo2023](https://github.com/Guarnizo2023)
-- **Yovany Suárez Silva** - _Senior Full Stack Developer_ - [desobsesor](https://github.com/desobsesor)
+- **Yovany Suárez Silva** - _Full Stack Software Engineer_ - [desobsesor](https://github.com/desobsesor)
 
 ## License 📄
 
