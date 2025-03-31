@@ -18,7 +18,7 @@ export class UsersController {
     @UseGuards(JwtAuthGuard)
     triggerEvent() {
         const data = { message: '¡Evento generado desde el backend!' };
-        this.eventsGateway.emitEvent(data); // Emitir el evento
+        this.eventsGateway.emitEvent(data);
         return { message: 'Evento emitido' };
     }
 

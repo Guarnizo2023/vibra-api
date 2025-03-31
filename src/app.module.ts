@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { APP_GUARD } from '@nestjs/core';
 import { CoursesModule } from './domains/courses/courses.module';
 import { EmotionsModule } from './domains/emotions/emotions.module';
 import { AuthModule } from './infrastructure/auth/auth.module';
@@ -17,6 +18,9 @@ import { PoliciesModule } from './domains/policies/policies.module';
 import { ActivitiesModule } from './domains/activities/activities.module';
 import { RankingModule } from './domains/rankings/ranking.module';
 import { SchedulingModule } from './domains/scheduling/scheduling.module';
+import { AppThrottlerModule } from './infrastructure/throttler/throttler.module';
+import { ThrottlerGuard } from './infrastructure/throttler/throttler.guard';
+import { ExceptionsModule } from './infrastructure/exceptions/exceptions.module';
 
 @Module({
   imports: [
@@ -39,8 +43,16 @@ import { SchedulingModule } from './domains/scheduling/scheduling.module';
     PoliciesModule,
     ActivitiesModule,
     RankingModule,
-    SchedulingModule
+    SchedulingModule,
+    AppThrottlerModule,
+    ExceptionsModule
   ],
-  providers: [EventsGateway],
+  providers: [
+    EventsGateway,
+    {
+      provide: APP_GUARD,
+      useClass: ThrottlerGuard,
+    },
+  ],
 })
 export class AppModule { }
