@@ -47,10 +47,10 @@ async function bootstrap() {
   app.useGlobalFilters(new ThrottlerExceptionFilter(logger));
 
   const config = new DocumentBuilder()
-    .setTitle('Cats example')
-    .setDescription('The cats API description')
+    .setTitle('Vibra')
+    .setDescription('The vibra API description')
     .setVersion('1.0')
-    .addTag('cats')
+    .addTag('vibra')
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, documentFactory);
