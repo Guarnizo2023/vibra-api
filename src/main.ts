@@ -1,10 +1,11 @@
+import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { WinstonModule } from 'nest-winston';
 import * as winston from 'winston';
+import { AppModule } from './app.module';
 import { AppLoggerService } from './helpers/logger/logger.service';
-import { ValidationPipe } from '@nestjs/common';
-import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { ThrottlerExceptionFilter } from './infrastructure/exceptions/throttler-exception.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
@@ -17,6 +18,15 @@ async function bootstrap() {
             winston.format.simple(),
           ),
         }),
+        // Add file transport for error logging
+        new winston.transports.File({
+          filename: 'logs/error.log',
+          level: 'error',
+          format: winston.format.combine(
+            winston.format.timestamp(),
+            winston.format.json()
+          )
+        })
       ],
     }),
   });
@@ -24,7 +34,7 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe())
 
   app.enableCors({
-    origin: ['http://localhost:8081', 'exp://192.168.101.73:8081'],
+    origin: ['http://localhost:8081', 'http://192.168.101.72:8081', 'exp://192.168.101.72:8081'],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     allowedHeaders: 'Content-Type, Accept',
     credentials: true,
@@ -32,6 +42,9 @@ async function bootstrap() {
 
   const logger = new AppLoggerService();
   app.useLogger(logger);
+
+  // Register the global exception filter for ThrottlerException
+  app.useGlobalFilters(new ThrottlerExceptionFilter(logger));
 
   const config = new DocumentBuilder()
     .setTitle('Cats example')
